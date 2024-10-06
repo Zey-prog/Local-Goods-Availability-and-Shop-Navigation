@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+<body>
+    
+    
+    <h1>TEST MAP</h1>
+    <div id="map"></div>
+
+    <input type="text" onkeyup="showSuggestions(this.value)" placeholder="Start typing a product name...">
+    <ul id="suggestions"></ul>
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="server.js"></script>
+    <script src="functions.js"></script>
+    
+</body>
+
+
+</html>
