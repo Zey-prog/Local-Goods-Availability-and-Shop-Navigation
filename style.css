@@ -1,0 +1,33 @@
+h1{
+    text-align: center;
+}
+
+
+
+#map{
+    margin: auto;
+    height: 500px;
+    width: 100%;
+}
+
+/* styles.css */
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    width: 200px;
+    display: none; /* Hidden by default */
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script>
+        function showSuggestions(query) {
+            if (query.length === 0) {
+                document.getElementById("suggestions").innerHTML = "";
+                return;
+            }
+
+            fetch(`http://127.0.0.1:5000/search?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let suggestions = "";
+                data.forEach(item => {
+                    suggestions += `<li>${item}</li>`;
+                });
+                document.getElementById("suggestions").innerHTML = suggestions;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Search for a Product</h1>
+    <input type="text" onkeyup="showSuggestions(this.value)" placeholder="Start typing a product name...">
+    <ul id="suggestions"></ul>
+</body>
+</html>

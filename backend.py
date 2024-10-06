@@ -11,7 +11,7 @@ df = pd.read_csv('C:/Users/user/Documents/MODULES/APPDEV/Application/datasets.cs
 sorted_products = sorted(df['Prince_Hypermart'].tolist())
 
 # Define your binary search function and routes as before...
-
+#test
 
 def binary_search_suggestions(products, query):
     """Returns suggestions for products starting with the query."""
@@ -53,16 +53,4 @@ def get_location():
     }
     # Return the location as JSON
     return jsonify(location)
-@app.route('/search', methods=['GET'])
-def search():
-    # Get the query from the frontend
-    query = request.args.get('query')
-    
-    if query:
-        suggestions = binary_search_suggestions(sorted_products, query)
-        return jsonify(suggestions)
-    
-    return jsonify([])
 
-if __name__ == '__main__':
-    app.run(debug=True)
