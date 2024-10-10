@@ -53,4 +53,16 @@ def get_location():
     }
     # Return the location as JSON
     return jsonify(location)
+@app.route('/search', methods=['GET'])
+def search():
+    # Get the query from the frontend
+    query = request.args.get('query')
+    
+    if query:
+        suggestions = binary_search_suggestions(sorted_products, query)
+        return jsonify(suggestions)
+    
+    return jsonify([])
 
+if __name__ == '__main__':
+    app.run(debug=True)
