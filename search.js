@@ -1,32 +1,36 @@
-// Fetch suggestions from the Flask backend
-async function fetchSuggestions(query) {
-  const response = await fetch(`/search?query=${query}`);
-  return await response.json();
+function showSuggestions(value) {
+  const suggestionsList = document.getElementById("suggestions");
+  suggestionsList.innerHTML = ""; // Clear previous suggestions
+
+  if (!value) return; // Exit if no input
+
+  // Make a GET request to your Flask backend
+  fetch(`http://127.0.0.1:5000/search?query=${encodeURIComponent(value)}`)
+    .then((response) => response.json())
+    .then((suggestions) => {
+      suggestions.forEach((product) => {
+        const suggestionItem = document.createElement("li");
+        suggestionItem.textContent = product;
+
+        // Add a click event listener to the suggestion
+        suggestionItem.onclick = () => {
+          selectProduct(product);
+        };
+
+        suggestionsList.appendChild(suggestionItem);
+      });
+    })
+    .catch((error) => console.error("Error fetching suggestions:", error));
 }
 
-// Display suggestions
-const searchInput = document.getElementById("search");
-const suggestionsList = document.getElementById("suggestions");
+// Function to handle product selection
+function selectProduct(product) {
+  const inputField = document.querySelector(".search input");
+  inputField.value = product; // Set the input value to the selected product
 
-searchInput.addEventListener("input", async () => {
-  const query = searchInput.value.toLowerCase();
-  suggestionsList.innerHTML = ""; // Clear old suggestions
+  // Optionally, you can call a function to show the route to the selected product
+  // showRouteToProduct(product.location);
 
-  if (query) {
-    const suggestions = await fetchSuggestions(query);
-    suggestions.forEach((suggestion) => {
-      const li = document.createElement("li");
-      li.textContent = suggestion;
-      li.addEventListener("click", () => {
-        searchInput.value = suggestion; // Set the search bar to the selected suggestion
-        suggestionsList.innerHTML = ""; // Clear the suggestions after selection
-      });
-      suggestionsList.appendChild(li);
-    });
-
-    // Show or hide suggestions based on matches
-    suggestionsList.style.display = suggestions.length ? "block" : "none";
-  } else {
-    suggestionsList.style.display = "none"; // Hide if the query is empty
-  }
-});
+  const suggestionsList = document.getElementById("suggestions");
+  suggestionsList.innerHTML = ""; // Clear suggestions after selection
+}

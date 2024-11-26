@@ -1,5 +1,6 @@
 {
   "notebook.defaultFormatter": "esbenp.prettier-vscode",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "livePreview.defaultPreviewPath": "/web.html"
+  "livePreview.defaultPreviewPath": "/web.html",
+  "liveServer.settings.port": 5501
 }

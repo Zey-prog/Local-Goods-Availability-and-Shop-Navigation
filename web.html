@@ -5,34 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leaflet Map</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
     />
   </head>
 
   <body>
     <h1>TEST MAP</h1>
-    <div id="map"></div>
-    <input
-      type="text"
-      onkeyup="showSuggestions(this.value)"
-      placeholder="Start typing a product name..."
-    />
+    <div class="search">
+      <input
+        type="text"
+        id="search-bar"
+        onkeyup="showSuggestions(this.value)"
+        placeholder="Start typing a product name..."
+      />
+    </div>
+
     <ul id="suggestions"></ul>
+
+    <!-- Add buttons for mode selection -->
+    <div class="buttons">
+      <button onclick="setMode('walking')">Walking Mode</button>
+      <button onclick="setMode('vehicle')">Vehicle Mode</button>
+    </div>
+
     <button onclick="getLocation()">Locate Me</button>
     <p id="status"></p>
-    <div id="map"></div>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="server.js"></script>
-    <script src="functions.js"></script>
+    <div id="map" style="height: 500px"></div>
+
+    <div id="map">
+      <small>Data © OpenStreetMap contributors, OSRM.</small>
+    </div>
+    <footer>https://opendatacommons.org/licenses/odbl/</footer>
+    <footer>
+      <p>
+        Data ©
+        <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>
+        contributors
+      </p>
+      <p>Routing data © <a href="http://project-osrm.org/">OSRM</a></p>
+      <p>
+        License: <a href="https://opendatacommons.org/licenses/odbl/">ODbL</a>
+      </p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script src="geolocation.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="search.js"></script>
   </body>
 </html>

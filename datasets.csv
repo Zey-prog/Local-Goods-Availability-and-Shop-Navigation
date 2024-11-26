@@ -1,112 +1,238 @@
-Prince_Hypermart,Price,Stocks 
-Bear Brand Adult Plus Powdered Milk  (1200g),767,99
-Milo Powdered Choco Malt Milk Drink (600g),190,120
-Nutella Hazelnut Spread  (900g),630,89
-Anlene Gold 5x Movemax Low Fat Adult Powdered Milk (990g),716,451
-Coca-Cola Classic Soda (2L),3294,210
-Golden Grains Sinandomeng Rice(25kg),1783,123
-Harvester's Farm Boy Dinorado Ric (10kg),720,45
-Goldmine Tiger Well Spring Milled Sinandomeng Rice(25kg),1375,10
-Perfect Grain Jasmine Gold Premium Ric (25kg),1700,12
-Selecta Farm Fresh Milk 404.00 (1L set of 4),404,1
-Eden Original Filled Cheese ?378.70 (430g),378.7,100
-White Rice,1375,89
-Nescaf Original Extra Forte Coffee ?599.00 (200g),599,120
-Nutella Hazelnut Spread ?553.00 (13oz),553,230
-Chips Ahoy!Original Chocolate Chip Cookies(13oz),1066,62
-Gaisano Capital,,
-Capiz Shell Lamp Shade,1999,30
-Mother of Pearl Caviar Dish,3599,25
-Custa Roons (Box of 6) ,180,39
-Cultured Pearl Necklace,1000,14
-Shell-Made Napkin Ring Set (4 pieces) ,999,41
-Bamboo Baul (Small),179,21
-Abaca Basket ,500,0
-Abaca Placemat ,100,78
-Barako Coffee Beans (1kg),350,430
-Dried Mangoes (1kg) ,70,120
-Banig (Woven Mat) ,500,250
-Embroidered Pia (Pineapple) Dress Varies ,5000,350
-Goldilocks Cake (Small) ,500,45
-Silver Necklace ,1000,56
-Locally Made Guitar,2000,20
-Mercury Drugs,,
-Anastrozole 1mg ,350,1000
-Aripiprazole 10mg ,98,3500
-Atorvastatin 10mg ,14,2000
-Betamethasone ,215,560
-Tegretol (Carbamazepine) 200mg ,14,5000
-Celebrex (Celecoxib) 100mg ,32,3500
-Clarithromycin 250mg ,35,2800
-Dalacin C (Clindamycin) 300mg ,50,750
-Clopidogrel 75mg ,23,890
-Doxycycline,45,1500
-Escitalopram Oxalate 20mg,270,3650
-Co-amoxiclav 400mg + 57mg/5ml 70ml,284,4500
-Fluconazole ,50,589
-Gabapentin 100mg,9.75,7930
-Ibuprofen (Advil) ,9.75,5230
-Novo,,
-Novo Saint Sealand Air Freshener Spray Jasmine Breeze,129,65
-Novo Makeup Toast 9 Color Eyeshadow Palette ,225,46
-Novo Volcanic Mud Pores Cleaning Mask ,138,41
-Novo Foundation Moisturizing Full Coverage Concealer,112,56
-Novo Lip Gloss Matte Temptation,119,4
-Novo Blush Mud Cream Plain Face Supernatural ,146,12
-Novo Original Tint Lip Bar 03,499,45
-Novo Silky Liquid Foundation Cream Full Coverage ,165,89
-Novo 9-Color Eye Shadow Palette,220,75
-Novo Moisturizing Lip Sleeping Mask Lip Film,125,56
-Novo Original Tint Lip Bar 07 ,499,100
-Novo Korean Style Bath Towel ,260,50
-Novo Hairline Repair Shadow Powder ,127,45
-Novo Waterproof Smooth Matte Concealer,128,0
-Novo Original Tint Lip Bar 04 ,499,35
-Shoe Box,, 
-Onitsuka Tiger 1183 A 862 Sneakers ,999,1
-Onitsuka Tiger Mexico 66 Sneakers,899,65
-Adidas Samba Classic Sneakers,679,50
-Puma Suede XL Sneakers ,500,41
-Onitsuka Tiger Tokuten Sneakers ,499,250
-Nike KD Trey 5 IX Basketball Sneakers ,699,120
-Onitsuka Tiger Mexico 66 Sneakers ,380,56
-Onitsuka Tiger Mexico 66 Slip-On Sneakers ,490,0
-MLB Original Store Sneakers ,480,25
-New Balance Women's 327 Sneakers ,450,50
-Natasha Shoes ,350,100
-Safety Jogger Desert Steel Toe Cap Shoes,520,300
-Birkenstock Arizona Sandals ,430,600
-Golden Goose Ball Star Sneakers ,549,0
-And1 Tai Chi Basketball Sneakers ,799,200
-JS One,,
-Dress,350,50
-Crop Top,85,300
-Sexy Top,120,645
-Skirt,250,150
-Short,280,89
-Pants,350,0
-Cargo Pants,250,300
-Swim Wear,150,500
-Long Gowns ,500,900
-Hats,120,1000
-Accessories ,50,700
-Sandals,499,600
-School Shoes ,350,800
-Jackets,350,500
-Shirt(Men/Woman),449,600
-Better Buys:,,
-Kawali (Cooking Pan),599,65
-Kaldero (Cooking Pot),500,56
-Sandok (Ladle),250,68
-Kutsara (Spoon),150,45
-Kutsilyo (Knife),100,50
-Garapon (Jar),65,0
-Palayok (Clay Pot),350,62
-Bilao (Winnowing Basket),130,74
-Tongs,120,23
-Spatula,150,12
-Whisk,145,63
-Grater,75,35
-Strainer and Colander,95,100
-Walis (Broom),89,69
-Basurahan (Trash Bin),120,89
+﻿PRODUCTS,PRICE ,STOCKS,CATEGORIES,,MARKET
+Surf Active Clean (1100g),118,250,POWDER,,TFA SUPERMARKET
+Surf Cherry Blossom (1100g),117,254,POWDER,,TFA SUPERMARKET
+Surf Sun Fresh (2200g),233,195,POWDER,,TFA SUPERMARKET
+Surf Cherry Blossom (2200g),236,350,POWDER,,TFA SUPERMARKET
+EQ Pants Small (3-7kg),329,150,DIAPER,,TFA SUPERMARKET
+EQ Pants XXXL (15kg),283.5,100,DIAPER,,TFA SUPERMARKET
+EQ Pants XXL (15kg),92,90,DIAPER,,TFA SUPERMARKET
+EQ Pants New Born (7kg),101.75,210,DIAPER,,TFA SUPERMARKET
+Lucky Me Pancit Canton (120g),18.5,100,NOODLES,,TFA SUPERMARKET
+Lucky Me Pancit Canton Extra Hot (120g),18.5,200,NOODLES,,TFA SUPERMARKET
+Payless Extra Big Pancit Canton(120g),18.5,185,NOODLES,,TFA SUPERMARKET
+Payless Extra Big Sweet & Spicy(120g),18.5,250,NOODLES,,TFA SUPERMARKET
+Payless Extra Big Chilimansi(120g),18.5,100,NOODLES,,TFA SUPERMARKET
+Nissin Cup Noodles (40g),21.75,70,NOODLES,,TFA SUPERMARKET
+Nissin Cup Noodles Spicy Seafood(40g),21.75,95,NOODLES,,TFA SUPERMARKET
+Nissin Cup Noodles Hot Cheesy(40g),21.75,90,NOODLES,,TFA SUPERMARKET
+Frootees Grapes (32g),58.75,120,BISCUIT,,TFA SUPERMARKET
+Frootees Apple (32g),58.75,100,BISCUIT,,TFA SUPERMARKET
+Wafer Time Strawberry (11g),45.75,150,BISCUIT,,TFA SUPERMARKET
+Doowee Donut Choco (190g),100.5,250,BISCUIT,,TFA SUPERMARKET
+Doowee Donut Milk (190g),100.5,230,BISCUIT,,TFA SUPERMARKET
+Cream-O Vanilla (30g),68,120,BISCUIT,,TFA SUPERMARKET
+Cream-O Choco(30g),68,95,BISCUIT,,TFA SUPERMARKET
+Cream-O Crinkles(30g),68,100,BISCUIT,,TFA SUPERMARKET
+Presto Peanut Butter (30g),59.75,180,BISCUIT,,TFA SUPERMARKET
+Nissin Waffer (30g),13.95,195,BISCUIT,,TFA SUPERMARKET
+Bingo Vanilla (20g),57.95,200,BISCUIT,,TFA SUPERMARKET
+Fita (80g),17.25,230,BISCUIT,,TFA SUPERMARKET
+Graham Cakes (200g),40.95,150,BISCUIT,,TFA SUPERMARKET
+Rebisco Strawberry (33g),56.75,90,BISCUIT,,TFA SUPERMARKET
+Rebisco Butter (33g),56.75,90,BISCUIT,,TFA SUPERMARKET
+Cloud 9 (50g),182,200,BISCUIT,,TFA SUPERMARKET
+Cloud 9 Peanut Butter (50g),182,150,BISCUIT,,TFA SUPERMARKET
+Silka (65g),34.95,85,SOAP,,TFA SUPERMARKET
+Silka (135g),78,75,SOAP,,TFA SUPERMARKET
+Silka (90g),79.5,70,SOAP,,TFA SUPERMARKET
+Dove Pink (135g),78,90,SOAP,,TFA SUPERMARKET
+Dove Original (100g),79.5,100,SOAP,,TFA SUPERMARKET
+Dove White (135g),78,120,SOAP,,TFA SUPERMARKET
+Palmolive (115g),41.75,90,SOAP,,TFA SUPERMARKET
+Palmolive Papaya (115g),41.75,110,SOAP,,TFA SUPERMARKET
+Palmolive Natural White (115g),41.75,95,SOAP,,TFA SUPERMARKET
+Mang Tomas (325g),30.75,83,SAUCE,,TFA SUPERMARKET
+Andoks Litson Sauce (340g),38.5,112,SAUCE,,TFA SUPERMARKET
+PAPA Banana Ketchup (530g),40.75,213,SAUCE,,TFA SUPERMARKET
+UFC Banana Ketchup (530g),43.5,189,SAUCE,,TFA SUPERMARKET
+UFC Tamis Anghang (320g),43.5,78,SAUCE,,TFA SUPERMARKET
+Mothers Best Sweet & Chili Sauce (340g),27.95,111,SAUCE,,TFA SUPERMARKET
+Mothers Best  Barbecue Marinade(350ml),41.75,56,SAUCE,,TFA SUPERMARKET
+Mothers Best Oyster Sauce (400g),91.95,98,SAUCE,,TFA SUPERMARKET
+Datu Puti BBQ-rrific (350ml),99.75,76,SAUCE,,TFA SUPERMARKET
+Datu Puti Oysterrific (430g),77.75,79,SAUCE,,TFA SUPERMARKET
+Datu Puti Vinegar(20ml),95,180,SAUCE,,TFA SUPERMARKET
+Datu Puti Soy Sauce (20ml),23,185,SAUCE,,TFA SUPERMARKET
+Jolly Mushroom Whole (198g),23.5,88,SAUCE,,TFA SUPERMARKET
+Jolly Young Corn Whole (425g),38,95,SAUCE,,TFA SUPERMARKET
+Jolly Green Peas (155g),59.75,95,SAUCE,,TFA SUPERMARKET
+Golden Fiesta Oil (1L),273.5,200,SAUCE,,TFA SUPERMARKET
+Golden Fiesta (500g),135.75,240,SAUCE,,TFA SUPERMARKET
+Bear Brand Adult Plus (1kg),440,150,MILK,,GAISANO GRAND MALL
+Bear Brand Fortified (90g),299.5,200,MILK,,GAISANO GRAND MALL
+Bear Brand Fortified (453g),688.5,300,MILK,,GAISANO GRAND MALL
+Bear Brand Junior+ (1.5kg),525,200,MILK,,GAISANO GRAND MALL
+Bear Brand Junior+ (1.2kg),426,150,MILK,,GAISANO GRAND MALL
+Bear Brand Choco (840g),299.5,380,MILK,,GAISANO GRAND MALL
+Bear Brand Choco (300g),110,350,MILK,,GAISANO GRAND MALL
+Alaska Fortified Powder (900g),280,200,MILK,,GAISANO GRAND MALL
+Alaska Fortified Powder (300g),101.5,150,MILK,,GAISANO GRAND MALL
+Alaska Fortified Powder (33g),108,125,MILK,,GAISANO GRAND MALL
+Anlene(990g),696.85,250,MILK,,GAISANO GRAND MALL
+Anlene (1.8kg),1008,360,MILK,,GAISANO GRAND MALL
+Anlene (600g),340,198,MILK,,GAISANO GRAND MALL
+Anlene (980g),536.75,254,MILK,,GAISANO GRAND MALL
+Milo (300g),98,200,MILK,,GAISANO GRAND MALL
+Milo(480g),137.6,150,MILK,,GAISANO GRAND MALL
+Milo(24g),107.75,100,MILK,,GAISANO GRAND MALL
+Oreo(27.6g),59,127,BISCUIT,,GAISANO GRAND MALL
+Oreo(28.6g),59,102,BISCUIT,,GAISANO GRAND MALL
+Oreo(119g),74.5,98,BISCUIT,,GAISANO GRAND MALL
+Sky Flakes (25g),84,112,BISCUIT,,GAISANO GRAND MALL
+Sky Flakes Onion(25g),129.75,112,BISCUIT,,GAISANO GRAND MALL
+Graham Choco(285g),59.75,202,BISCUIT,,GAISANO GRAND MALL
+Graham Crushed(200g),48.15,87,BISCUIT,,GAISANO GRAND MALL
+Graham Honey(210g),43,99,BISCUIT,,GAISANO GRAND MALL
+Fita Original(30g),40.25,116,BISCUIT,,GAISANO GRAND MALL
+Fita Crackers(30g),56,120,BISCUIT,,GAISANO GRAND MALL
+Fita Slugs(80g),82,233,BISCUIT,,GAISANO GRAND MALL
+Bingo Choco(28g),16.75,314,BISCUIT,,GAISANO GRAND MALL
+Bingo Original(28g),58.5,220,BISCUIT,,GAISANO GRAND MALL
+Bingo Vanilla(75g),58.5,137,BISCUIT,,GAISANO GRAND MALL
+Fudgee Bar Milk(41g),17.5,345,BISCUIT,,GAISANO GRAND MALL
+Fudgee Bar Combo(41g),76.5,426,BISCUIT,,GAISANO GRAND MALL
+Doowee Donut Strawberry (41g),76.5,231,BISCUIT,,GAISANO GRAND MALL
+Doowee Donut Choco(41g),100.5,213,BISCUIT,,GAISANO GRAND MALL
+Del (1000ml),159,410,DETERGENT,,GAISANO GRAND MALL
+Del Lavender(240ml),39.9,159,DETERGENT,,GAISANO GRAND MALL
+Del Black(240ml),37.1,365,DETERGENT,,GAISANO GRAND MALL
+Joy (26ml),30.6,400,DETERGENT,,GAISANO GRAND MALL
+Surf Antibecterial(1480ml),299,99,DETERGENT,,GAISANO GRAND MALL
+Surf Fabcon Blossom Fresh(800ml),149.5,107,DETERGENT,,GAISANO GRAND MALL
+Surf Fabcon Perfume(1.5L),299,346,DETERGENT,,GAISANO GRAND MALL
+Datu Puti Vinegar (385ml),20.75,260,SAUCE,,GAISANO GRAND MALL
+Datu Puti Soy Sauce(385ml),22.95,350,SAUCE,,GAISANO GRAND MALL
+Datu Puti Vinegar (350ml),16.95,200,SAUCE,,GAISANO GRAND MALL
+Datu Puti Soy Sauce(350ml),19.95,170,SAUCE,,GAISANO GRAND MALL
+Datu Puti Vinegar(1L),45.95,195,SAUCE,,GAISANO GRAND MALL
+Datu Puti Soy Sauce(1L),55.95,213,SAUCE,,GAISANO GRAND MALL
+Datu Puti Vinegar(½ gal),88.95,76,SAUCE,,GAISANO GRAND MALL
+Datu Puti Soy Sauce(½gal),106.95,91,SAUCE,,GAISANO GRAND MALL
+Datu Puti Pares Pack(100ml),89.75,148,SAUCE,,GAISANO GRAND MALL
+Datu Puti Soy Sauce Negosyo Pack(100ml),112.75,99,SAUCE,,GAISANO GRAND MALL
+Gold Honey (250ml),250,65,SAUCE,,GAISANO GRAND MALL
+Wild Honey(250ml),240,76,SAUCE,,GAISANO GRAND MALL
+Gold Honey(350ml),325,93,SAUCE,,GAISANO GRAND MALL
+Silver Swan Worcestershire Sauce(350g),39.75,70,SAUCE,,GAISANO GRAND MALL
+Mang Tomas SIGA (325g),40.5,199,SAUCE,,GAISANO GRAND MALL
+Jufran Sweet Chili (330g),55,64,SAUCE,,GAISANO GRAND MALL
+UFC Sweet Chili Sauce(340g),41.5,243,SAUCE,,GAISANO GRAND MALL
+UFC Tamis Anghang (320g),27.95,300,SAUCE,,GAISANO GRAND MALL
+PAPA Banana Ketchup(320g),24.95,250,SAUCE,,GAISANO GRAND MALL
+Mother Best Sweet & Sour Sauce(340g),43.95,259,SAUCE,,GAISANO GRAND MALL
+Dona Elena DICED Tomato (800g),140,165,SAUCE,,GAISANO GRAND MALL
+Dona Elena DICED Tomato (400g),80,165,SAUCE,,GAISANO GRAND MALL
+Dona Elena Whole Peeled Tomato(400g),80,310,SAUCE,,GAISANO GRAND MALL
+Colgate Charcoal Clean(20g),120,159,TOOTHPASTE,,GAISANO GRAND MALL
+Colgate Fresh Confidence(20g),116.75,200,TOOTHPASTE,,GAISANO GRAND MALL
+Colgate Anticavity Toothpaste(193g),175,140,TOOTHPASTE,,GAISANO GRAND MALL
+Colgate Optic White(90g),136.5,350,TOOTHPASTE,,GAISANO GRAND MALL
+Colgate Strong Teeth(250g),126,145,TOOTHPASTE,,GAISANO GRAND MALL
+Colgate Total 12(150g),140,300,TOOTHPASTE,,GAISANO GRAND MALL
+Colgate Advanced White(115g),130.75,150,TOOTHPASTE,,GAISANO GRAND MALL
+Closeup ALL DAY Freshness (191g),139.5,260,TOOTHPASTE,,GAISANO GRAND MALL
+Closeup Triple Fresh Formula(150g),160.5,130,TOOTHPASTE,,GAISANO GRAND MALL
+555 Sardines in Tomato Sauce(155g),21.5,378,SARDINES,,GAISANO GRAND MALL
+555 Hot Sardines in Tomato Sauce (155g),22.5,450,SARDINES,,GAISANO GRAND MALL
+Century Tuna Flakes in Oil(155g),41.5,311,SARDINES,,GAISANO GRAND MALL
+Century Tuna Hot & Spicy(155g),41.5,300,SARDINES,,GAISANO GRAND MALL
+Argentina Corned Beef(150g),32.75,172,SARDINES,,GAISANO GRAND MALL
+Argentina Beef Loaf(150g),32.75,210,SARDINES,,GAISANO GRAND MALL
+Ladies Blouse Collar KNT(Medium),328,470,DRESS,,GAISANO GRAND MALL
+Ladies Blouse Collar KNT(Small),310,380,DRESS,,GAISANO GRAND MALL
+Ladies Blouse Collar KNT(Large),367.5,415,DRESS,,GAISANO GRAND MALL
+Trouser Pink (Medium),399,500,DRESS,,GAISANO GRAND MALL
+Trouser Beige(Medium),399,500,DRESS,,GAISANO GRAND MALL
+Trouser Brown (Small),278,510,DRESS,,GAISANO GRAND MALL
+Macbeth V-neck (XL),389.75,450,DRESS,,GAISANO GRAND MALL
+Macbeth V-neck White (XL),369.75,390,DRESS,,GAISANO GRAND MALL
+Macbeth Round Neck White (XL),369.75,460,DRESS,,GAISANO GRAND MALL
+Islander Slipper (39),350,400,DRESS,,GAISANO GRAND MALL
+Girls denim Short (Small),379,290,DRESS,,GAISANO GRAND MALL
+School Shoes Men (31),115,300,SHOES,,BETTER BUYS
+School Shoes Women (38),115,250,SHOES,,BETTER BUYS
+Rubber Shoes (39),199,490,SHOES,,BETTER BUYS
+Sport Shoes(35),399,180,SHOES,,BETTER BUYS
+Crocs (38),355,254,SHOES,,BETTER BUYS
+Nike Slipper (38),128,390,SHOES,,BETTER BUYS
+Havaianas slipper (38),155,450,SHOES,,BETTER BUYS
+Bed Sheet (54x90cm),145,350,SHOES,,BETTER BUYS
+Table Cloth (152cm),95,360,SHOES,,BETTER BUYS
+Fiber Pillow (18x28cm),125,125,SHOES,,BETTER BUYS
+Cooking Pan,599,65,,,BETTER BUYS
+Cooking Pot,500,56,,,BETTER BUYS
+Ladle,250,68,,,BETTER BUYS
+Spoon,150,45,,,BETTER BUYS
+Knife,100,50,,,BETTER BUYS
+Jar,65,0,,,BETTER BUYS
+Clay Pot,350,62,,,BETTER BUYS
+Tongs,120,23,,,BETTER BUYS
+Spatula,150,12,,,BETTER BUYS
+Wire Whisk,145,63,,,BETTER BUYS
+Grater,75,35,,,BETTER BUYS
+Strainer & Colander,95,100,,,BETTER BUYS
+Broom,120,89,,,BETTER BUYS
+Trash Bin,89,69,,,BETTER BUYS
+Bearbrand Adult Plus Powdered Milk(1200g),767,99,MILK ,,PRINCE HYPERMART
+Milo Powdered Choco Malt Milk Drink(600g),190,120,MILK ,,PRINCE HYPERMART
+Anlene Gold 5x Movemax Low Fat Adult Powdered Milk(990g),716,451,MILK ,,PRINCE HYPERMART
+Selecta Farm Fresh Milk (1L),404,1,MILK ,,PRINCE HYPERMART
+Nescafe Original Extra Forte Coffee,599,120,MILK ,,PRINCE HYPERMART
+Saint Sealand Air Freshener Spray Jasmine Breeze,129,65,FACE MAKE UP,,NOVO
+Makeup Toast & Color Eyeshadow Palette,225,46,FACE MAKE UP,,NOVO
+Volcanic Mud Pores Cleaning Mask,138,41,FACE MAKE UP,,NOVO
+Foundation Moisturizing Full Coverage Concealer,112,56,FACE MAKE UP,,NOVO
+Lip Gloss Matte Temptation,119,4,FACE MAKE UP,,NOVO
+Blush Mud Cream Plain Face Supernatural ,146,12,FACE MAKE UP,,NOVO
+Original Tint Lip Bar 03,499,45,FACE MAKE UP,,NOVO
+Silky Liquid Foundation Cream Full Coverage,165,89,FACE MAKE UP,,NOVO
+9-Color Eye Shadow Palette,220,75,FACE MAKE UP,,NOVO
+Moisturizing Lip Sleeping Mask Lip Film,125,56,FACE MAKE UP,,NOVO
+Hairline Repair Shadow Powder,127,45,FACE MAKE UP,,NOVO
+Waterproof Smooth Matte Concealer,128,0,FACE MAKE UP,,NOVO
+Original Tint Lip Bar 04,499,35,FACE MAKE UP,,NOVO
+Original Tint Lip Bar 07,499,100,FACE MAKE UP,,NOVO
+Onitsuka Tiger 1183A862 Sneakers,999,1,,,SHOE BOX
+Onitsuka Tiger Mexico 66 Sneakers,899,65,,,SHOE BOX
+Adidas Samba Classic Sneakers ,679,50,,,SHOE BOX
+Puma Suede XL Sneakers ,500,41,,,SHOE BOX
+Onitsuka Tiger Tokuten Sneakers,499,250,,,SHOE BOX
+Nike KD Trey 5 1X Basketball Sneakers,699,120,,,SHOE BOX
+Onitsuka Tiger Mexico Ship-On Sneakers,490,0,,,SHOE BOX
+MLB Original Store Sneakers,480,25,,,SHOE BOX
+New Balance Women's 327 Sneakers,450,50,,,SHOE BOX
+Natasha Shoes,350,100,,,SHOE BOX
+Safety Jogger  Desert Steel Toe Cap Shoes,520,300,,,SHOE BOX
+Birkenstock Arizona Sandals,430,600,,,SHOE BOX
+Golden Goose Ball Star Sneakers,549,0,,,SHOE BOX
+And1 Tai Chi Basketball Sneakers,799,200,,,SHOE BOX
+Dress,350,50,,,JS ONE
+Crop Top,85,300,,,JS ONE
+Sexy Top,120,645,,,JS ONE
+Skirt,250,150,,,JS ONE
+Short,280,89,,,JS ONE
+Pants,350,0,,,JS ONE
+Cargo Pants,250,300,,,JS ONE
+Swim Wear,150,500,,,JS ONE
+Long Gowns,500,900,,,JS ONE
+Hats,120,1000,,,JS ONE
+Accessories ,50,700,,,JS ONE
+Sandals,499,600,,,JS ONE
+School Shoes,350,800,,,JS ONE
+Jackets,350,500,,,JS ONE
+Shirt Men & Women,499,600,,,JS ONE
+Anastrozole (1mg),350,1000,,,MERCURY DRUGS
+Aripiprazole (10mg),98,3500,,,MERCURY DRUGS
+Atorvastatin (10mg),14,2000,,,MERCURY DRUGS
+Betamethasone,215,560,,,MERCURY DRUGS
+Tegretol Carbamazepine (200mg),14,5000,,,MERCURY DRUGS
+Celebrex Celecoxib (100mg),32,3500,,,MERCURY DRUGS
+Clarithromycin (250mg),32,2800,,,MERCURY DRUGS
+Dalacin C Clindamycin (300mg),50,750,,,MERCURY DRUGS
+Clopidogrel (75mg),23,890,,,MERCURY DRUGS
+Doxycycline ,45,1500,,,MERCURY DRUGS
+Escitalipram Oxolate (20mg),270,3650,,,MERCURY DRUGS
+Co-Amoxiclav (400mg),284,4500,,,MERCURY DRUGS
+Fluconazole,50,589,,,MERCURY DRUGS
+Gabapentin (100mg),9.75,7930,,,MERCURY DRUGS
+Ibuprofen Advil Liquid Gel,9.75,5230,,,MERCURY DRUGS
