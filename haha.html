@@ -130,28 +130,33 @@
         }
 
         .toggle-button {
-        position: fixed;
-        top: 50%;
-        right: 0;
-        width: 50px;
-        height: 50px;
-        background: #1e3a8a;
-        color: white;
-        text-align: center;
-        border: none;
-        border-radius: 5px 0 0 5px;
-        cursor: pointer;
-        font-size: 20px;
-        transform: translateY(-50%);
-        z-index: 1000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: background 0.3s ease;
-        display: none; /* Hide by default */
+            position: fixed;
+            bottom: 20px; /* Distance from the bottom */
+            right: 20px; /* Distance from the right */
+            width: 50px;
+            height: 50px;
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 50%; /* Make it circular */
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+            display: none; /* Initially hidden */
         }
 
         .toggle-button:hover {
             background: #1e40af;
         }
+
+        /* Rotate arrow when side panel is open */
+        .toggle-button.open {
+            transform: rotate(180deg); /* Adjust rotation as needed */
+        }
+
 
         .product-container {
             margin-top: 20px;
@@ -332,32 +337,37 @@
     </div>
 
     <!-- Toggle button -->
-    <button class="toggle-button" onclick="togglePanel()">☰</button>
+    <button class="toggle-button" id="toggleButton" onclick="togglePanel()">➔</button>
+
 
     <script>
 
         // Hide Get Started screen and show main content
         function hideGetStarted() {
-    document.getElementById('getStartedContainer').style.display = 'none';
-    document.body.style.overflowY = 'auto'; // Enable scrolling
+            document.getElementById('getStartedContainer').style.display = 'none';
+            document.body.style.overflowY = 'auto'; // Enable scrolling
 
-    // Show the toggle button
-    const toggleButton = document.querySelector('.toggle-button');
-    toggleButton.style.display = 'block';
-}
-
+        // Show the toggle button
+            const toggleButton = document.querySelector('.toggle-button');
+            toggleButton.style.display = 'block';
+        }
 
 
         function togglePanel() {
             const sidePanel = document.getElementById('sidePanel');
+            const toggleButton = document.getElementById('toggleButton');
             const currentRight = window.getComputedStyle(sidePanel).getPropertyValue('right');
-            // Slide panel in or out
-            if (currentRight === '0px') {
-                sidePanel.style.right = '-40vw';
-            } else {
-                sidePanel.style.right = '0px';
-            }
+
+        // Slide panel in or out and rotate the arrow
+        if (currentRight === '0px') {
+            sidePanel.style.right = '-40vw';
+            toggleButton.classList.remove('open'); // Reset arrow rotation
+        } else {
+            sidePanel.style.right = '0px';
+            toggleButton.classList.add('open'); // Rotate arrow
         }
+    }
+
     </script>
 
 </body>
