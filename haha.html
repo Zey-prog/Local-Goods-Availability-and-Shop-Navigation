@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Blue UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        /* Fullscreen Get Started container */
+        .get-started-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff83e0, #84fff9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .get-started-container h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .get-started-container p {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .get-started-btn {
+            padding: 15px 30px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .get-started-btn:hover {
+            background-color: #ebe6dd;
+        }
+
+
+        .content {
+            flex: 1;
+            background-color: #f4f4f4;
+        }
+
+        .map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .side-panel {
+            width: 40vw;
+            background: linear-gradient(135deg,  #ff83e0, #84fff9);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            right: -40vw;
+            height: 100vh;
+            transition: right 0.3s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .side-panel h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #60a5fa;
+            font-size: 16px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #5ffdfd;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            border-radius: 20px;
+            background: #08c9eb;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #1e40af;
+        }
+
+        .toggle-button {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        background: #1e3a8a;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        cursor: pointer;
+        font-size: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease;
+        display: none; /* Hide by default */
+        }
+
+        .toggle-button:hover {
+            background: #1e40af;
+        }
+
+        .product-container {
+            margin-top: 20px;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            color: #ff5722;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Get Started Overlay -->
+    <div class="get-started-container" id="getStartedContainer">
+        <h1>Welcome to Our Shop</h1>
+        <p>Find the best products and deals here. Get started now!</p>
+        <button class="get-started-btn" onclick="hideGetStarted()">Get Started</button>
+    </div>
+
+    <!-- Main content area -->
+    <div class="content">
+        <iframe
+            id="map"
+            class="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31201.19305695136!2d123.123456!3d11.456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x123456789abc!2sEstancia%2C%20Iloilo%2C%20Philippines!5e0!3m2!1sen!2sus!4v1696405704274!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- Side panel -->
+    <div class="side-panel" id="sidePanel">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search Product..." />
+            <button class="search-button">Search</button>
+        </div>
+
+        <h2>Our Products</h2>
+
+        <div class="product-container">
+            <div class="product-list">
+                <div class="product-card">
+                    <h3>Smartphone</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Chair</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Laptop</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Headphones</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Smartphone</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Chair</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Laptop</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Headphones</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Smartphone</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Chair</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Laptop</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Headphones</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Smartphone</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Chair</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Laptop</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Headphones</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Smartphone</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Chair</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Laptop</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Headphones</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Smartphone</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Chair</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Laptop</h3>
+                    <p>In Stock</p>
+                </div>
+                <div class="product-card">
+                    <h3>Headphones</h3>
+                    <p>In Stock</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle button -->
+    <button class="toggle-button" onclick="togglePanel()">☰</button>
+
+    <script>
+
+        // Hide Get Started screen and show main content
+        function hideGetStarted() {
+    document.getElementById('getStartedContainer').style.display = 'none';
+    document.body.style.overflowY = 'auto'; // Enable scrolling
+
+    // Show the toggle button
+    const toggleButton = document.querySelector('.toggle-button');
+    toggleButton.style.display = 'block';
+}
+
+
+
+        function togglePanel() {
+            const sidePanel = document.getElementById('sidePanel');
+            const currentRight = window.getComputedStyle(sidePanel).getPropertyValue('right');
+            // Slide panel in or out
+            if (currentRight === '0px') {
+                sidePanel.style.right = '-40vw';
+            } else {
+                sidePanel.style.right = '0px';
+            }
+        }
+    </script>
+
+</body>
+</html>
