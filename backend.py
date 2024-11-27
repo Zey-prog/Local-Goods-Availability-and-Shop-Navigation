@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from fuzzywuzzy import fuzz
 import pandas as pd
+import numpy as np
 import geocoder
 
 app = Flask(__name__)
@@ -10,6 +11,7 @@ CORS(app)
 # Load your CSV file
 df = pd.read_csv('C:/Users/ASUS/Documents/APPDEV/Local-Goods-Availability-and-Shop-Navigation/datasets.csv')
 sorted_products = sorted(df['PRODUCTS'].tolist())
+
 
 class TernarySearchTree:
     class Node:
@@ -23,7 +25,7 @@ class TernarySearchTree:
 
     def __init__(self):
         self.root = None
-
+        
     def _insert(self, node, word, index, original_word):
         char = word[index]
 
@@ -84,11 +86,13 @@ class TernarySearchTree:
         if node:
             # Only collect suggestions that match the prefix
             self._collect(node.middle, prefix, result)
-
+            
+            
         return [word for word in result if word.lower().startswith(prefix.lower())]
 
 # Initialize the TST and insert the product names
 tst = TernarySearchTree()
+
 for product in sorted_products:
     tst.insert(product.lower(), product)  # Pass both lowercased and original word
 
@@ -117,38 +121,59 @@ def fuzzy_search_suggestions(products, query, threshold=80):
     return [product for product, _ in suggestions]
 
 
-@app.route('/location')
-def get_location():
-    # Get the location based on IP
-    g = geocoder.ip('me')
-    location = {
-        'latitude': g.latlng[0],
-        'longitude': g.latlng[1]
-    }
-    
-    # Return the location as JSON
-    return jsonify(location)
-
-@app.route('/search', methods=['GET'])
+@app.route('/search-container', methods=['GET'])
 def search():
     # Get the query from the frontend
-    query = request.args.get('query').lower()  # Convert query to lowercase
+    query = request.args.get('query').lower()
     
     if query:
         # Perform TST-based prefix search
         tst_suggestions = tst.search(query)
         
-        # Perform fuzzy search as a fallback if needed
+        # Perform fuzzy search as a fallback for handling mistyped inputs
         fuzzy_suggestions = fuzzy_search_suggestions(sorted_products, query)
         
-        # Combine both suggestion lists (you can prioritize TST results if needed)
+        # Combine both suggestion lists (TST results + fuzzy search results)
         combined_suggestions = list(set(tst_suggestions + fuzzy_suggestions))
-        # Filter combined suggestions to only include those that start with the query
-        combined_suggestions = [product for product in combined_suggestions if product.lower().startswith(query.lower())]
         
+        # Optionally, prioritize TST suggestions by placing them first
         return jsonify(combined_suggestions)
     
     return jsonify([])
+
+
+@app.route('/product_details', methods=['GET'])
+def product_details():
+    # Get the product name from the request
+    product_name = request.args.get('product')
+    
+    if not product_name:
+        return jsonify({"error": "Product name is required"}), 400
+
+    # Verify column names
+    expected_columns = ['PRODUCTS', 'PRICE', 'STOCKS', 'CATEGORIES', 'MARKET', 'LATITUDE', 'LONGITUDE']
+    for col in expected_columns:
+        if col not in df.columns:
+            return jsonify({"error": f"Column '{col}' not found in dataset"}), 500
+
+    # Search for the product in the dataset
+    product_info = df[df['PRODUCTS'].str.lower() == product_name.lower()]
+    
+    if product_info.empty:
+        return jsonify({"error": "Product not found"}), 404
+    
+    # Convert data types to native Python types for JSON serialization
+    product_details = {
+        'product': product_info['PRODUCTS'].values[0],
+        'price': product_info['PRICE'].values[0].item() if isinstance(product_info['PRICE'].values[0], np.int64) else product_info['PRICE'].values[0],
+        'stocks': product_info['STOCKS'].values[0].item() if isinstance(product_info['STOCKS'].values[0], np.int64) else product_info['STOCKS'].values[0],
+        'category': product_info['CATEGORIES'].values[0],
+        'market': product_info['MARKET'].values[0],
+        'latitude': product_info['LATITUDE'].values[0],
+        'longitude': product_info['LONGITUDE'].values[0]
+    }
+    
+    return jsonify(product_details)
 
 
 if __name__ == '__main__':
