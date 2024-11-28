@@ -30,17 +30,16 @@
         overflow: hidden; /* Prevent scrolling */
       }
 
-      .side-panel {
+      .side-panel-right {
         z-index: 1000; /* Ensure it's above the map */
       }
 
-      .toggle-button {
-      }
       /* When the side panel is open, disable interactions with the map */
       .map.disabled {
         pointer-events: none; /* Prevent interactions with the map */
         opacity: 0.8; /* Optional: Dim the map for better focus on the side panel */
       }
+
       /* Fullscreen Get Started container */
       .get-started-container {
         position: fixed;
@@ -84,6 +83,11 @@
         background-color: #ebe6dd;
       }
 
+      .get-started-btn:disabled {
+        background-color: #d1d5db;
+        cursor: not-allowed;
+      }
+
       .content {
         flex: 1;
         background-color: #f4f4f4;
@@ -94,7 +98,9 @@
         height: 100%;
       }
 
-      .side-panel {
+      /* Right side panel */
+      .side-panel-right {
+        z-index: 1000;
         width: 40vw;
         background: linear-gradient(135deg, #ff83e0, #84fff9);
         color: white;
@@ -107,13 +113,120 @@
         overflow-y: auto;
       }
 
-      .side-panel h2 {
+      /* Left side panel for Account Center */
+      .side-panel-left {
+        z-index: 1000;
+        width: 30vw;
+        background: linear-gradient(135deg, #84fff9, #ff83e0);
+        color: white;
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: -40vw;
+        height: 100vh;
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+      }
+
+      .side-panel-left h2 {
         margin-bottom: 20px;
         font-size: 24px;
         color: #ffffff;
         text-align: center;
         border-bottom: 2px solid #3b82f6;
         padding-bottom: 10px;
+      }
+
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-bottom: 60px;
+        border: 4px solid white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .toggle-button {
+        position: fixed;
+        bottom: 20px;
+        width: 50px;
+        height: 50px;
+        background: #1e3a8a;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease;
+      }
+
+      .toggle-button-left {
+        left: 20px;
+      }
+
+      .toggle-button-right {
+        right: 20px;
+      }
+
+      .toggle-button:hover {
+        background: #1e40af;
+      }
+
+      .toggle-button.open {
+        transform: rotate(180deg); /* Rotate arrow when panel is open */
+      }
+
+      /* Account section styling */
+      .account-section {
+        margin-top: 40px;
+      }
+
+      .account-item {
+        margin: 15px 0;
+        background: #ffffff;
+        color: #333;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .account-item:hover {
+        background: #f0f0f0;
+        transform: translateY(-3px);
+      }
+
+      /* Account section styling */
+      .email-section {
+        margin-top: 40px;
+      }
+
+      .email-item {
+        margin: 15px 0;
+        background: #ffffff;
+        color: #333;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .email-item:hover {
+        background: #f0f0f0;
+        transform: translateY(-3px);
       }
 
       .search-container {
@@ -169,27 +282,20 @@
         background: #1e40af;
       }
 
-      .toggle-button {
-        position: fixed;
-        top: 50%;
-        right: 0;
-        width: 50px;
-        height: 50px;
-        background: #1e3a8a;
+      .submit-btn {
+        width: 100%;
+        padding: 10px;
+        background: #3b82f6;
         color: white;
-        text-align: center;
         border: none;
-        border-radius: 5px 0 0 5px;
+        border-radius: 5px;
+        font-size: 16px;
         cursor: pointer;
-        font-size: 20px;
-        transform: translateY(-50%);
-        z-index: 1000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: background 0.3s ease;
       }
 
-      .toggle-button:hover {
-        background: #1e40af;
+      .submit-btn:hover {
+        background: #2563eb;
       }
 
       .product-container {
@@ -236,6 +342,59 @@
         font-weight: bold;
         font-size: 16px;
       }
+
+      /* Dropdown menu adjustments */
+      .dropdown-menu {
+        display: none;
+        margin-left: 0;
+        padding: 10px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+      }
+
+      .dropdown-menu.show {
+        display: block;
+        max-height: 700px; /* Adjust as needed */
+        opacity: 1;
+      }
+
+      .dropdown-menu .account-item {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+
+      .dropdown-menu .account-item:hover {
+        background-color: #f9f9f9;
+      }
+
+      /* Input styling for consistency */
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      /* Button styling */
+      button {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
     </style>
   </head>
   <body>
@@ -257,7 +416,7 @@
     </div>
 
     <!-- Side panel -->
-    <div class="side-panel" id="sidePanel">
+    <div class="side-panel-right" id="sidePanelRight">
       <div class="search-container">
         <input
           type="text"
@@ -290,12 +449,239 @@
             <h3>Headphones</h3>
             <p>In Stock</p>
           </div>
+          <div class="product-card">
+            <h3>Smartphone</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Chair</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Laptop</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Headphones</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Smartphone</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Chair</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Laptop</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Headphones</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Smartphone</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Chair</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Laptop</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Headphones</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Smartphone</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Chair</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Laptop</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Headphones</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Smartphone</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Chair</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Laptop</h3>
+            <p>In Stock</p>
+          </div>
+          <div class="product-card">
+            <h3>Headphones</h3>
+            <p>In Stock</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Toggle button -->
-    <button class="toggle-button" onclick="togglePanel()">☰</button>
+    <!-- Left side panel -->
+    <div class="side-panel-left" id="sidePanelLeft">
+      <!-- Profile Picture Section -->
+      <div class="profile-picture">
+        <img
+          id="profilePicture"
+          src="https://via.placeholder.com/120"
+          alt="Profile Picture"
+        />
+        <div
+          class="edit-icon-container"
+          style="position: relative; text-align: center; margin-top: -30px"
+        >
+          <label
+            for="uploadProfilePicture"
+            style="
+              cursor: pointer;
+              color: white;
+              background: #3b82f6;
+              border-radius: 50%;
+              padding: 10px;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+              height="20"
+              viewBox="0 96 960 960"
+              width="20"
+            >
+              <path
+                d="M404 672q-40 0-68-28t-28-68q0-40 28-68t68-28q40 0 68 28t28 68q0 40-28 68t-68 28ZM115 976q-22 0-37.5-15.5T62 923V750q0-12 4.5-23t13.5-19l427-427 192 192L272 923q-8 8-19 12.5t-23 4.5H115Zm200-450 168-168-60-60L255 467q-6 6-6 14t6 14l60 60Zm506-6L580 279q-11-11-11-26.5t11-26.5l97-97q11-11 26.5-11T730 129l198 198q11 11 11 26.5T928 380l-97 97q-11 11-26.5 11T821 380Zm68-68ZM404 632Z"
+              />
+            </svg>
+          </label>
+          <input
+            type="file"
+            id="uploadProfilePicture"
+            accept="image/*"
+            style="display: none"
+            onchange="updateProfilePicture(event)"
+          />
+        </div>
+      </div>
+
+      <!-- Account Section with a dropdown for Profile -->
+      <div class="account-section">
+        <div
+          class="account-item"
+          id="profileItem"
+          onclick="toggleProfileDropdown()"
+        >
+          Profile
+        </div>
+        <div class="dropdown-menu" id="profileDropdown">
+          <form id="profileForm">
+            <div class="account-item">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+            <div class="account-item">
+              <label for="middleName">Middle Name</label>
+              <input
+                type="text"
+                id="middleName"
+                placeholder="Enter your middle name"
+                required
+              />
+            </div>
+            <div class="account-item">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Enter your last name"
+                required
+              />
+            </div>
+
+            <div class="account-item">
+              <label for="gender">Gender</label>
+              <select id="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="account-item">
+              <label for="address">Address</label>
+              <textarea
+                id="address"
+                placeholder="Enter your address"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Save Information</button>
+          </form>
+        </div>
+
+        <!-- Email Section with a dropdown for Profile -->
+        <!-- Email Section -->
+        <div class="email-item" id="emailItem" onclick="toggleEmailDropdown()">
+          Email
+        </div>
+        <div class="dropdown-menu" id="emailDropdown">
+          <form id="emailForm">
+            <div class="account-item">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Enter a valid email"
+              />
+            </div>
+            <button type="submit" class="submit-btn">Save Email</button>
+          </form>
+          <p id="emailStatus" style="color: white; margin-top: 10px"></p>
+        </div>
+
+        <div class="account-item" onclick="logout()">Logout</div>
+      </div>
+    </div>
+
+    <!-- Toggle buttons -->
+    <button
+      class="toggle-button toggle-button-left"
+      id="toggleButtonLeft"
+      onclick="toggleLeftPanel()"
+    >
+      ⇦
+    </button>
+    <button
+      class="toggle-button toggle-button-right"
+      id="toggleButtonRight"
+      onclick="toggleRightPanel()"
+    >
+      ⇨
+    </button>
 
     <script>
       // Hide Get Started screen and show main content
@@ -303,18 +689,158 @@
         document.getElementById("getStartedContainer").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
         document.body.style.overflowY = "auto"; // Enable scrolling
+
+        // Show the toggle button
+        const toggleButton = document.querySelector(".toggle-button");
+        toggleButton.style.display = "block";
       }
 
-      function togglePanel() {
-        const sidePanel = document.getElementById("sidePanel");
+      function updateProfilePicture(event) {
+        const fileInput = event.target;
+        const file = fileInput.files[0];
+        const profilePicture = document.getElementById("profilePicture");
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            profilePicture.src = e.target.result; // Set the new image source
+          };
+
+          reader.readAsDataURL(file); // Read the uploaded file as a data URL
+        }
+      }
+
+      function toggleRightPanel() {
+        const rightPanel = document.getElementById("sidePanelRight");
+        const rightButton = document.getElementById("toggleButtonRight");
         const currentRight = window
-          .getComputedStyle(sidePanel)
+          .getComputedStyle(rightPanel)
           .getPropertyValue("right");
-        // Slide panel in or out
+
         if (currentRight === "0px") {
-          sidePanel.style.right = "-40vw";
+          rightPanel.style.right = "-40vw";
+          rightButton.classList.remove("open");
         } else {
-          sidePanel.style.right = "0px";
+          rightPanel.style.right = "0px";
+          rightButton.classList.add("open");
+        }
+      }
+
+      function toggleLeftPanel() {
+        const leftPanel = document.getElementById("sidePanelLeft");
+        const leftButton = document.getElementById("toggleButtonLeft");
+        const currentLeft = window
+          .getComputedStyle(leftPanel)
+          .getPropertyValue("left");
+
+        if (currentLeft === "0px") {
+          leftPanel.style.left = "-40vw";
+          leftButton.classList.remove("open");
+        } else {
+          leftPanel.style.left = "0px";
+          leftButton.classList.add("open");
+        }
+      }
+
+      function toggleProfileDropdown() {
+        const dropdownMenu = document.getElementById("profileDropdown");
+        dropdownMenu.classList.toggle("show"); // Toggle visibility using the 'show' class
+      }
+
+      function toggleEmailDropdown() {
+        const dropdownMenu = document.getElementById("emailDropdown");
+        dropdownMenu.classList.toggle("show"); // Toggle visibility using the 'show' class
+      }
+
+      function toggleDropdown(dropdownId) {
+        const dropdownMenu = document.getElementById(dropdownId);
+        dropdownMenu.classList.toggle("show"); // Toggle visibility using the 'show' class
+      }
+
+      document
+        .getElementById("profileForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent actual form submission
+
+          // Collect form data
+          const firstName = document.getElementById("firstName").value;
+          const middleName = document.getElementById("middleName").value;
+          const lastName = document.getElementById("lastName").value;
+          const gender = document.getElementById("gender").value;
+          const address = document.getElementById("address").value;
+
+          // Display the collected data (you can replace this with an API call)
+          alert(`
+            First Name: ${firstName}
+            Middle Name: ${middleName}
+            Last Name: ${lastName}
+            Gender: ${gender}
+            Address: ${address}
+        `);
+
+          // Optionally reset the form
+          event.target.reset();
+        });
+
+      // Toggle Email Dropdown
+      function toggleEmailDropdown() {
+        const emailDropdown = document.getElementById("emailDropdown");
+        emailDropdown.classList.toggle("show");
+      }
+
+      // Handle Email Form Submission
+      document
+        .getElementById("emailForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent page refresh on form submission
+
+          const emailInput = document.getElementById("email").value;
+          const emailStatus = document.getElementById("emailStatus");
+
+          if (emailInput) {
+            // Simulate sending email to a server (replace with actual server API endpoint)
+            fetch("https://your-backend-server.com/submit-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: emailInput }),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  emailStatus.textContent = "Email saved successfully!";
+                  emailStatus.style.color = "lime";
+                } else {
+                  emailStatus.textContent = "Failed to save email. Try again.";
+                  emailStatus.style.color = "red";
+                }
+              })
+              .catch((error) => {
+                emailStatus.textContent =
+                  "Error: Unable to connect to the server.";
+                emailStatus.style.color = "red";
+              });
+          } else {
+            emailStatus.textContent = "Please enter a valid email address.";
+            emailStatus.style.color = "red";
+          }
+        });
+
+      function logout() {
+        // Attempt to close the tab or window
+        if (
+          window.confirm(
+            "Are you sure you want to logout and close the website?"
+          )
+        ) {
+          window.open("", "_self"); // Set the window to the current tab
+          window.close(); // Try to close the window
+        }
+        // Note: If `window.close()` fails, it will do nothing in most modern browsers unless the tab was opened by `window.open()`.
+      }
+
+      function logout() {
+        if (confirm("Are you sure you want to log out?")) {
+          window.location.href = "https://example.com/logout-success"; // Replace with your desired URL
         }
       }
     </script>
