@@ -1,8 +1,11 @@
 function showSuggestions(value) {
   const suggestionsList = document.getElementById("suggestions");
-  suggestionsList.innerHTML = ""; // Clear previous suggestions
+  suggestionsList.innerHTML = "";
 
-  if (!value) return; // Exit if no input
+  if (value.trim() === "") {
+    suggestionsList.style.display = "none"; // Hide when input is empty
+    return;
+  }
 
   // Make a GET request to your Flask backend
   fetch(
@@ -10,19 +13,26 @@ function showSuggestions(value) {
   )
     .then((response) => response.json())
     .then((suggestions) => {
-      suggestions.forEach((product) => {
-        const suggestionItem = document.createElement("li");
-        suggestionItem.textContent = product;
+      if (suggestions.length > 0) {
+        // Populate suggestions
+        suggestions.forEach((product) => {
+          const suggestionItem = document.createElement("li");
+          suggestionItem.textContent = product;
 
-        // Add a click event listener to the suggestion
-        suggestionItem.onclick = () => {
-          selectProduct(product);
-        };
+          // Add click event
+          suggestionItem.onclick = () => selectProduct(product);
 
-        suggestionsList.appendChild(suggestionItem);
-      });
+          suggestionsList.appendChild(suggestionItem);
+        });
+
+        suggestionsList.style.display = "block"; // Show suggestions
+      } else {
+        suggestionsList.style.display = "none"; // Hide if no suggestions
+      }
     })
-    .catch((error) => console.error("Error fetching suggestions:", error));
+    .catch((error) => {
+      console.error("Error fetching suggestions:", error);
+    });
 }
 
 // Function to handle product selection
@@ -32,6 +42,7 @@ function selectProduct(product) {
 
   const suggestionsList = document.getElementById("suggestions");
   suggestionsList.innerHTML = ""; // Clear suggestions after selection
+  suggestionsList.style.display = "none"; // Hide the suggestions box
 
   // Fetch product details and display them on the map
   fetchProductDetails(product);

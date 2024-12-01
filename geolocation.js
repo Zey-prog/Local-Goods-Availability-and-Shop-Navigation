@@ -1,5 +1,5 @@
 // Initialize the map
-var map = L.map("map").setView([11.454754686931716, 123.15208710612488], 19);
+var map = L.map("map").setView([11.454754686931716, 123.15208710612488], 29);
 
 // Add a tile layer from OpenStreetMap
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -16,23 +16,6 @@ let control;
 
 // Set mode variable (default is 'walking')
 let mode = "walking";
-
-function togglePanel() {
-  const sidePanel = document.getElementById("sidePanel");
-  const map = document.getElementById("map");
-  const currentRight = window
-    .getComputedStyle(sidePanel)
-    .getPropertyValue("right");
-
-  // Slide panel in or out
-  if (currentRight === "0px") {
-    sidePanel.style.right = "-40vw";
-    map.classList.remove("disabled"); // Enable map interactions
-  } else {
-    sidePanel.style.right = "0px";
-    map.classList.add("disabled"); // Disable map interactions
-  }
-}
 
 // Get user's location once
 function getLocation() {
@@ -101,7 +84,7 @@ function updateLocation(position) {
     .openPopup();
 
   // Center the map on user's location
-  map.setView([userLat, userLng], 15);
+  map.setView([userLat, userLng], 30);
 
   // Show route to the closest marker
   showRouteToClosestMarker();
