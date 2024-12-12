@@ -28,12 +28,12 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #ff83e0, #84fff9);
+  background: linear-gradient(135deg, #58faf2, #ffffff);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
   text-align: center;
 }
 
@@ -51,7 +51,7 @@ body {
 
 .get-started-btn {
   padding: 15px 30px;
-  background-color: #3b82f6;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;
@@ -62,6 +62,7 @@ body {
 
 .get-started-btn:hover {
   background-color: #ebe6dd;
+  color: #000000;
 }
 
 .get-started-btn:disabled {
@@ -83,7 +84,7 @@ body {
 .side-panel-right {
   z-index: 1000;
   width: 30vw;
-  background: linear-gradient(135deg, #ff83e0, #84fff9);
+  background: rgba(253, 253, 253, 0.658);
   color: white;
   padding: 20px;
   position: fixed;
@@ -98,7 +99,8 @@ body {
 .side-panel-left {
   z-index: 1000;
   width: 25vw;
-  background: linear-gradient(135deg, #84fff9, #ff83e0);
+  background: rgba(253, 253, 253, 0.658);
+
   color: white;
   padding: 20px;
   position: fixed;
@@ -135,13 +137,25 @@ body {
   object-fit: cover;
 }
 
+.locate {
+  background-color: white;
+  max-width: fit-content;
+  max-height: 20px;
+  position: fixed;
+  z-index: 500;
+}
+
+.locate :hover {
+  background-color: white;
+}
+
 .toggle-button {
   position: fixed;
   bottom: 20px;
   width: 50px;
   height: 50px;
-  background: #1e3a8a;
-  color: white;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
   text-align: center;
   border: none;
   border-radius: 50%;

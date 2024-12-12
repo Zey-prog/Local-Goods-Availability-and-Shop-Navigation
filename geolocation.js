@@ -30,8 +30,8 @@ function getLocation() {
   }
 }
 
+// Fetch product details based on product name
 function fetchProductDetails(productName) {
-  // Send request to Flask backend
   fetch(`/product-details?product=${encodeURIComponent(productName)}`)
     .then((response) => response.json())
     .then((data) => {
@@ -40,17 +40,13 @@ function fetchProductDetails(productName) {
         return;
       }
 
-      // Add marker to the map
       if (data.latitude && data.longitude) {
-        const marker = L.marker([data.latitude, data.longitude]).addTo(map)
-          .bindPopup(`
-                        <b>Product:</b> ${data.product}<br>
-                        <b>Price:</b> ${data.price}<br>
-                        <b>Stocks:</b> ${data.stocks}<br>
-                        <b>Category:</b> ${data.category}<br>
-                        <b>Market:</b> ${data.market}
-                    `);
-        marker.openPopup();
+        const marker = L.marker([data.latitude, data.longitude])
+          .addTo(map)
+          .bindPopup(
+            `Product: ${data.product}<br>Price: ${data.price}<br>Stocks: ${data.stocks}<br>Category: ${data.category}<br>Market: ${data.market}`
+          )
+          .openPopup();
       } else {
         alert("Market location could not be determined.");
       }
@@ -63,34 +59,31 @@ function fetchProductDetails(productName) {
 
 // Handle search bar selection
 document.getElementById("search-bar").addEventListener("change", function () {
-  const selectedProduct = this.value; // Assuming the search bar value is the product name
+  const selectedProduct = this.value;
   fetchProductDetails(selectedProduct);
 });
 
-// Update user's location (called when getCurrentPosition succeeds)
+// Update user's location
 function updateLocation(position) {
   userLat = position.coords.latitude;
   userLng = position.coords.longitude;
 
-  // Remove existing user marker if it exists
   if (userMarker) {
     map.removeLayer(userMarker);
   }
 
-  // Add marker for the user's current location
   userMarker = L.marker([userLat, userLng])
     .addTo(map)
     .bindPopup("You are here!")
     .openPopup();
 
-  // Center the map on user's location
   map.setView([userLat, userLng], 30);
 
   // Show route to the closest marker
   showRouteToClosestMarker();
 }
 
-// Function to set the mode ('walking' or 'vehicle')
+// Function to set mode (walking or vehicle)
 function setMode(newMode) {
   mode = newMode;
   if (userLat && userLng) {
@@ -98,7 +91,7 @@ function setMode(newMode) {
   }
 }
 
-// Function to show the route to the closest marker based on the mode
+// Function to show route to the closest marker based on the mode
 function showRouteToClosestMarker() {
   const markerLocations = [
     [11.454754686931716, 123.15208710612488], // GAISANO
@@ -106,7 +99,6 @@ function showRouteToClosestMarker() {
     [11.454395987807628, 123.1528445371425], // Public Market
   ];
 
-  // Find the closest marker
   let closestLocation = markerLocations[0];
   let closestDistance = Infinity;
 
@@ -118,29 +110,28 @@ function showRouteToClosestMarker() {
     }
   });
 
-  // Remove existing routing control if it exists
   if (control) {
     map.removeControl(control);
   }
 
-  // Create a single route to the closest marker
   control = L.Routing.control({
     waypoints: [
-      L.latLng(userLat, userLng), // User's location
-      L.latLng(closestLocation[0], closestLocation[1]), // Closest marker location
+      L.latLng(userLat, userLng),
+      L.latLng(closestLocation[0], closestLocation[1]),
     ],
     routeWhileDragging: true,
     createMarker: function () {
       return null; // Disable marker creation for the route
     },
     router: L.Routing.osrmv1({
-      profile: mode === "walking" ? "foot" : "car", // Change the profile based on the mode
-      serviceUrl: "https://router.project-osrm.org", // Use OSRM service
+      profile: mode === "walking" ? "foot" : "car",
+      serviceUrl: "https://routing.openstreetmap.de/routed-foot/", // Use a different service
     }),
   }).addTo(map);
+  z;
 }
 
-// Function to handle geolocation errors
+// Handle geolocation errors
 function showError(error) {
   switch (error.code) {
     case error.PERMISSION_DENIED:
