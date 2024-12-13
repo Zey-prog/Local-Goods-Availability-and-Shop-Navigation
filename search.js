@@ -68,6 +68,7 @@ function fetchProductDetails(productName) {
           market,
           latitude,
           longitude,
+          market_details, // Add market details
         } = data;
 
         // Add marker to the map
@@ -87,8 +88,47 @@ function fetchProductDetails(productName) {
           .openPopup();
 
         // Center map to the marker
-        map.setView([latitude, longitude], 15);
+        map.setView([latitude, longitude], 30);
       }
     })
     .catch((err) => console.error("Error fetching product details:", err));
+}
+
+function showMarketProducts(marketName) {
+  // Filter products by market
+  const filteredProducts = productsData.filter(
+    (product) => product.MARKET === marketName
+  );
+
+  // Get the product details container
+  const productDetailsContainer = document.getElementById(
+    "productDetailsContainer"
+  );
+
+  // Clear previous content
+  productDetailsContainer.innerHTML = "";
+
+  // Check if any products match
+  if (filteredProducts.length === 0) {
+    productDetailsContainer.innerHTML = `<p>No products found for ${marketName}</p>`;
+    return;
+  }
+
+  // Create a list of products
+  const productList = document.createElement("ul");
+  filteredProducts.forEach((product) => {
+    const productItem = document.createElement("li");
+    productItem.innerHTML = `
+      <strong>${product.PRODUCTS}</strong><br>
+      Price: ${product.PRICE}<br>
+      Stock: ${product.STOCKS}
+    `;
+    productList.appendChild(productItem);
+  });
+
+  // Add the list to the container
+  productDetailsContainer.appendChild(productList);
+
+  // Show the container
+  productDetailsContainer.style.display = "block";
 }

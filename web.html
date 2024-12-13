@@ -16,10 +16,11 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
     />
-    <title>Beautiful Blue UI</title>
+    <title>estanciamarket</title>
   </head>
   <body>
     <!-- Get Started Overlay -->
+    <!--
     <div class="get-started-container" id="getStartedContainer">
       <h1>WELCOME TO ESTANCIA</h1>
       <p>Find the products you need here, shop now!</p>
@@ -27,7 +28,7 @@
         Get Started
       </button>
     </div>
-
+    -->
     <!-- Main content area -->
     <div class="content">
       <div id="map" class="map" allowfullscreen="" loading="lazy">
@@ -50,49 +51,36 @@
         <button class="search-button">Search</button>
       </div>
 
-      <h2>Our Products</h2>
+      <h2>ESTANCIA MARKET</h2>
 
       <div class="product-container">
         <div class="product-list">
-          <div class="product-card">
+          <div
+            class="product-card"
+            onclick="toggleProductList('GAISANO GRAND MALL', 'productsGaisano')"
+          >
             <h3>GAISANO GRAND MALL</h3>
-            <p>...</p>
+            <div
+              id="productsGaisano"
+              class="product-list-container"
+              style="display: none"
+            >
+              <ul id="productsGaisanoList"></ul>
+            </div>
           </div>
-          <div class="product-card">
-            <h3>Chair</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Laptop</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Headphones</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Smartphone</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Chair</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Laptop</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Headphones</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Smartphone</h3>
-            <p>In Stock</p>
-          </div>
-          <div class="product-card">
-            <h3>Chair</h3>
-            <p>In Stock</p>
+
+          <div
+            class="product-card"
+            onclick="toggleProductList('TFA SUPERMARKET', 'productsTFA')"
+          >
+            <h3>TFA SUPERMARKET</h3>
+            <div
+              id="productsTFA"
+              class="product-list-container"
+              style="display: none"
+            >
+              <ul id="productsTFAList"></ul>
+            </div>
           </div>
         </div>
       </div>
@@ -249,7 +237,41 @@
     >
       ⇨
     </button>
+    <script>
+      function toggleProductList(market, containerId) {
+        const productListContainer = document.getElementById(containerId);
+        const productList = document.getElementById(`${containerId}List`);
 
+        if (productListContainer.style.display === "block") {
+          productListContainer.style.display = "none";
+        } else {
+          fetchProductList(market, productList, productListContainer);
+        }
+      }
+
+      function fetchProductList(market, productList, productListContainer) {
+        fetch("datasets.csv")
+          .then((response) => response.text())
+          .then((data) => {
+            const rows = data.split("\n");
+            productList.innerHTML = "";
+
+            rows.forEach((row) => {
+              const columns = row.split(",");
+              if (columns.length >= 5 && columns[4]?.trim() === market) {
+                const li = document.createElement("li");
+                li.textContent = `${columns[0] || "Unknown Product"} - Price: ${
+                  columns[1] || "N/A"
+                } - Stocks: ${columns[2] || "N/A"}`;
+                li.onclick = () => alert(`You selected: ${columns[0]}`);
+                productList.appendChild(li);
+              }
+            });
+            productListContainer.style.display = "block";
+          })
+          .catch((error) => console.error("Error loading CSV:", error));
+      }
+    </script>
     <script src="functions.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script src="search.js"></script>

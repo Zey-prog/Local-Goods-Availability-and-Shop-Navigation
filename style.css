@@ -350,6 +350,23 @@ body {
   font-size: 16px;
 }
 
+.product-list-container {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.product-list-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-list-container li {
+  padding: 5px 0;
+}
+
 /* Dropdown menu adjustments */
 .dropdown-menu {
   display: none;

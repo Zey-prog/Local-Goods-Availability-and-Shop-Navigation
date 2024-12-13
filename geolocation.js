@@ -11,12 +11,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 let userMarker;
 let userLat, userLng;
 
-// Routing control variable
-let control;
-
-// Set mode variable (default is 'walking')
-let mode = "walking";
-
 // Get user's location once
 function getLocation() {
   if (navigator.geolocation) {
@@ -89,46 +83,6 @@ function setMode(newMode) {
   if (userLat && userLng) {
     showRouteToClosestMarker(); // Recalculate route when mode changes
   }
-}
-
-// Function to show route to the closest marker based on the mode
-function showRouteToClosestMarker() {
-  const markerLocations = [
-    [11.454754686931716, 123.15208710612488], // GAISANO
-    [11.455805724706472, 123.1517110247931], // Imperial Appliance Plaza
-    [11.454395987807628, 123.1528445371425], // Public Market
-  ];
-
-  let closestLocation = markerLocations[0];
-  let closestDistance = Infinity;
-
-  markerLocations.forEach((location) => {
-    const distance = map.distance([userLat, userLng], location);
-    if (distance < closestDistance) {
-      closestDistance = distance;
-      closestLocation = location;
-    }
-  });
-
-  if (control) {
-    map.removeControl(control);
-  }
-
-  control = L.Routing.control({
-    waypoints: [
-      L.latLng(userLat, userLng),
-      L.latLng(closestLocation[0], closestLocation[1]),
-    ],
-    routeWhileDragging: true,
-    createMarker: function () {
-      return null; // Disable marker creation for the route
-    },
-    router: L.Routing.osrmv1({
-      profile: mode === "walking" ? "foot" : "car",
-      serviceUrl: "https://routing.openstreetmap.de/routed-foot/", // Use a different service
-    }),
-  }).addTo(map);
-  z;
 }
 
 // Handle geolocation errors
