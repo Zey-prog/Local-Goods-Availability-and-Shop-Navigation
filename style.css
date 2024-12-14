@@ -84,7 +84,8 @@ body {
 .side-panel-right {
   z-index: 1000;
   width: 30vw;
-  background: rgba(253, 253, 253, 0.658);
+  background: rgba(253, 253, 253, 0.253);
+  backdrop-filter: blur(4px);
   color: white;
   padding: 20px;
   position: fixed;
@@ -99,8 +100,8 @@ body {
 .side-panel-left {
   z-index: 1000;
   width: 25vw;
-  background: rgba(253, 253, 253, 0.658);
-
+  background: rgba(253, 253, 253, 0.253);
+  backdrop-filter: blur(4px);
   color: white;
   padding: 20px;
   position: fixed;
@@ -137,49 +138,51 @@ body {
   object-fit: cover;
 }
 
-.locate {
-  background-color: white;
-  max-width: fit-content;
-  max-height: 20px;
-  position: fixed;
-  z-index: 500;
-}
-
-.locate :hover {
-  background-color: white;
-}
-
 .toggle-button {
-  position: fixed;
-  bottom: 20px;
-  width: 50px;
-  height: 50px;
-  background: #ffffff;
-  color: rgb(0, 0, 0);
-  text-align: center;
+  position: fixed; /* Use fixed positioning to keep it relative to the viewport */
+  bottom: 45vh; /* Position from the bottom of the viewport */
+  width: 15px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
+  background: #ffffff; /* Button background color */
+  color: rgb(0, 0, 0); /* Text color */
+  text-align: center; /* Center text */
   border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 1000; /* Ensure it appears above other elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+  transition: background 0.4s ease, right 0.4s ease, left 0.4s ease; /* Smooth transition for background and position */
+}
+
+.toggle-icon {
+  position: relative;
+  transition: transform 0.9s ease; /* Smooth transition for the icon */
+}
+
+.toggle-icon-right {
+  left: -0.4vw;
+}
+.toggle-icon-left {
+  right: 0.2vw;
+}
+
+.toggle-button.open .toggle-icon {
+  transform: rotate(180deg); /* Flip the icon when the button is open */
 }
 
 .toggle-button-left {
-  left: 20px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  left: 0vw; /* Position from the left of the viewport */
 }
 
 .toggle-button-right {
-  right: 20px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  right: 0vw; /* Position from the right of the viewport */
 }
 
 .toggle-button:hover {
-  background: #1e40af;
-}
-
-.toggle-button.open {
-  transform: rotate(180deg); /* Rotate arrow when panel is open */
+  background: #1e40af; /* Change background on hover */
 }
 
 /* Account section styling */
@@ -323,11 +326,27 @@ body {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  position: relative; /* Ensure it has a position context */
 }
 
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-card.expanded {
+  position: fixed; /* Make it fixed to occupy the whole space */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  z-index: 2000; /* Ensure it's above other elements */
+  transform: scale(1); /* Reset any scaling */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease; /* Smooth transition */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 .product-card img {
@@ -413,9 +432,55 @@ select {
 /* Button styling */
 button {
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 button:hover {
   opacity: 0.9;
+}
+
+/* BUTTONS IN THE MAP */
+
+.login-button {
+  position: absolute; /* Position it absolutely within the map */
+  top: 1vh; /* Adjust the top position */
+  right: 2vw; /* Adjust the right position */
+  padding: 10px 20px; /* Add some padding */
+  background-color: #ffffff; /* Button background color */
+  color: rgb(0, 0, 0); /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 1000; /* Ensure it appears above the map */
+  transition: right 0.4s ease; /* Smooth transition for right position */
+}
+
+.login-button:hover {
+  background-color: #a1a1a1;
+}
+
+.locate-button {
+  position: absolute; /* Position it absolutely within the map */
+  top: 95vh; /* Adjust the top position to be below the Log In button */
+  right: 2vw; /* Align with the right position of the Log In button */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.274
+  ); /* Make background transparent */
+  border: none; /* Remove border */
+  border-radius: 5px;
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 1000; /* Ensure it appears above the map */
+  transition: right 0.4s ease;
+}
+
+.locate-button:hover {
+  background-color: #a1a1a1;
+}
+
+.locate-button img {
+  width: 20px; /* Set icon width */
+  height: 30px; /* Set icon height */
 }

@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("loginbackground.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+      .login-container {
+        background: rgba(255, 255, 255, 0.562);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        max-height: fit-content;
+        width: 300px;
+      }
+      .login-container h2 {
+        margin-top: 50px;
+        margin: 0 0 30px;
+      }
+      .login-container input[type="text"] {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .login-container input[type="password"] {
+        margin-top: 40px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .login-container input[type="submit"] {
+        margin-top: 100px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ccc;
+        cursor: pointer;
+      }
+      .login-container input[type="submit"]:hover {
+        background-color: #e0b8b8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Log in</h2>
+      <form>
+        <input type="text" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <input type="submit" value="LOG IN" />
+      </form>
+    </div>
+  </body>
+</html>

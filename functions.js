@@ -28,6 +28,8 @@ function updateProfilePicture(event) {
 function toggleRightPanel() {
   const rightPanel = document.getElementById("sidePanelRight");
   const rightButton = document.getElementById("toggleButtonRight");
+  const loginButton = document.getElementById("loginButton");
+  const locateButton = document.getElementById("locateButton");
   const currentRight = window
     .getComputedStyle(rightPanel)
     .getPropertyValue("right");
@@ -35,9 +37,15 @@ function toggleRightPanel() {
   if (currentRight === "0px") {
     rightPanel.style.right = "-40vw";
     rightButton.classList.remove("open");
+    loginButton.style.right = "1vw"; // Reset position when panel is closed
+    locateButton.style.right = "1vw";
+    rightButton.style.right = "0vw"; // Reset position when panel is closed
   } else {
     rightPanel.style.right = "0px";
     rightButton.classList.add("open");
+    loginButton.style.right = "calc(1vw + 30vw)"; // Move button to the right when panel opens
+    locateButton.style.right = "calc(1vw + 30vw)"; // Move button to the right when panel opens
+    rightButton.style.right = "calc(0vw + 30vw)";
   }
 }
 
@@ -51,9 +59,11 @@ function toggleLeftPanel() {
   if (currentLeft === "0px") {
     leftPanel.style.left = "-40vw";
     leftButton.classList.remove("open");
+    leftButton.style.left = "0vw"; // Reset position when panel is closed
   } else {
     leftPanel.style.left = "0px";
     leftButton.classList.add("open");
+    leftButton.style.left = "calc(0vw + 25vw)"; // Move button to the right when panel opens
   }
 }
 

@@ -32,6 +32,20 @@
     <!-- Main content area -->
     <div class="content">
       <div id="map" class="map" allowfullscreen="" loading="lazy">
+        <button
+          id="loginButton"
+          class="login-button"
+          onclick="location.href='login.html'"
+        >
+          Log In
+        </button>
+        <button id="locateButton" class="locate-button" onclick="getLocation()">
+          <img
+            src="icon/current-location-regular-24.png"
+            alt="Locate Me"
+            style="width: 20px; height: 20px"
+          />
+        </button>
         <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
         <script src="geolocation.js"></script>
       </div>
@@ -221,21 +235,27 @@
     </div>
 
     <!-- Toggle buttons -->
-    <button class="locate" onclick="getLocation()">Locate Me</button>
-
     <button
       class="toggle-button toggle-button-left"
       id="toggleButtonLeft"
       onclick="toggleLeftPanel()"
     >
-      ⇦
+      <img
+        src="icon/chevron-right-regular-24.png"
+        alt="Toggle Left"
+        class="toggle-icon toggle-icon-right"
+      />
     </button>
     <button
       class="toggle-button toggle-button-right"
       id="toggleButtonRight"
       onclick="toggleRightPanel()"
     >
-      ⇨
+      <img
+        src="icon/chevron-left-regular-24.png"
+        alt="Toggle Right"
+        class="toggle-icon toggle-icon-left"
+      />
     </button>
     <script>
       function toggleProductList(market, containerId) {
@@ -258,18 +278,74 @@
 
             rows.forEach((row) => {
               const columns = row.split(",");
-              if (columns.length >= 5 && columns[4]?.trim() === market) {
-                const li = document.createElement("li");
-                li.textContent = `${columns[0] || "Unknown Product"} - Price: ${
-                  columns[1] || "N/A"
-                } - Stocks: ${columns[2] || "N/A"}`;
-                li.onclick = () => alert(`You selected: ${columns[0]}`);
-                productList.appendChild(li);
+              if (columns.length >= 7 && columns[4]?.trim() === market) {
+                const productName = columns[0] || "Unknown Product";
+                const price = columns[1] || "N/A";
+                const stocks = columns[2] || "N/A";
+                const category = columns[3] || "N/A"; // Assuming category is in the 4th column
+                const marketName = columns[4] || "N/A"; // Assuming market is in the 5th column
+                const latitude = parseFloat(columns[5]);
+                const longitude = parseFloat(columns[6]);
+
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+            <h3>${productName}</h3>
+            <p>Price: ${price}</p>
+            <p>Stocks: ${stocks}</p>
+          `;
+
+                card.onclick = () => {
+                  // Remove expanded class from all cards
+                  const allCards = document.querySelectorAll(".product-card");
+                  allCards.forEach((c) => c.classList.remove("expanded"));
+
+                  // Add expanded class to the selected card
+                  card.classList.add("expanded");
+
+                  // Automatically pinpoint the product on the map
+                  pinpointOnMap(
+                    latitude,
+                    longitude,
+                    productName,
+                    price,
+                    stocks,
+                    category,
+                    marketName
+                  );
+                };
+
+                productList.appendChild(card);
               }
             });
             productListContainer.style.display = "block";
           })
           .catch((error) => console.error("Error loading CSV:", error));
+      }
+
+      function pinpointOnMap(
+        latitude,
+        longitude,
+        productName,
+        price,
+        stocks,
+        category,
+        marketName
+      ) {
+        // Assuming you have a global map variable initialized with Leaflet
+        const marker = L.marker([latitude, longitude]).addTo(map);
+        marker
+          .bindPopup(
+            `
+    <strong>${productName}</strong><br>
+    Price: ${price}<br>
+    Stocks: ${stocks}<br>
+    Category: ${category}<br>
+    Market: ${marketName}
+  `
+          )
+          .openPopup();
+        map.setView([latitude, longitude], 15); // Zoom in on the product location
       }
     </script>
     <script src="functions.js"></script>

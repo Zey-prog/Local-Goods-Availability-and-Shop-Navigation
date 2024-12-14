@@ -1,3 +1,5 @@
+let selectedProductDetails = null; // Variable to store selected product details
+
 function showSuggestions(value) {
   const suggestionsList = document.getElementById("suggestions");
   suggestionsList.innerHTML = "";
@@ -19,8 +21,11 @@ function showSuggestions(value) {
           const suggestionItem = document.createElement("li");
           suggestionItem.textContent = product;
 
-          // Add click event
-          suggestionItem.onclick = () => selectProduct(product);
+          // Add click event to store product details
+          suggestionItem.onclick = () => {
+            // Fetch product details to store them
+            fetchProductDetails(product);
+          };
 
           suggestionsList.appendChild(suggestionItem);
         });
@@ -35,20 +40,7 @@ function showSuggestions(value) {
     });
 }
 
-// Function to handle product selection
-function selectProduct(product) {
-  const inputField = document.querySelector(".search-input");
-  inputField.value = product; // Set the input value to the selected product
-
-  const suggestionsList = document.getElementById("suggestions");
-  suggestionsList.innerHTML = ""; // Clear suggestions after selection
-  suggestionsList.style.display = "none"; // Hide the suggestions box
-
-  // Fetch product details and display them on the map
-  fetchProductDetails(product);
-}
-
-// Function to fetch product details and show them on the map
+// Function to fetch product details and store them
 function fetchProductDetails(productName) {
   fetch(
     `http://127.0.0.1:5000/product_details?product=${encodeURIComponent(
@@ -60,75 +52,48 @@ function fetchProductDetails(productName) {
       if (data.error) {
         alert(data.error);
       } else {
-        const {
-          product,
-          price,
-          stocks,
-          category,
-          market,
-          latitude,
-          longitude,
-          market_details, // Add market details
-        } = data;
+        // Store product details in the variable
+        selectedProductDetails = {
+          product: data.product,
+          price: data.price,
+          stocks: data.stocks,
+          category: data.category,
+          market: data.market,
+          latitude: data.latitude,
+          longitude: data.longitude,
+        };
 
-        // Add marker to the map
-        const marker = L.marker([latitude, longitude]).addTo(map);
+        // Set the input field value to the selected product name
+        const searchInput = document.getElementById("search-bar");
+        searchInput.value = data.product; // Update the search box with the selected product name
 
-        // Bind popup with product details
-        marker
-          .bindPopup(
-            `
-          <strong>${product}</strong><br>
-          Price: ${price}<br>
-          Stocks: ${stocks}<br>
-          Category: ${category}<br>
-          Market: ${market}
-        `
-          )
-          .openPopup();
-
-        // Center map to the marker
-        map.setView([latitude, longitude], 30);
+        // Clear suggestions after selection
+        const suggestionsList = document.getElementById("suggestions");
+        suggestionsList.innerHTML = "";
+        suggestionsList.style.display = "none"; // Hide the suggestions box
       }
     })
     .catch((err) => console.error("Error fetching product details:", err));
 }
 
-function showMarketProducts(marketName) {
-  // Filter products by market
-  const filteredProducts = productsData.filter(
-    (product) => product.MARKET === marketName
-  );
-
-  // Get the product details container
-  const productDetailsContainer = document.getElementById(
-    "productDetailsContainer"
-  );
-
-  // Clear previous content
-  productDetailsContainer.innerHTML = "";
-
-  // Check if any products match
-  if (filteredProducts.length === 0) {
-    productDetailsContainer.innerHTML = `<p>No products found for ${marketName}</p>`;
-    return;
+// Function to handle search button click
+function handleSearchButtonClick() {
+  if (selectedProductDetails) {
+    const { latitude, longitude, product, price, stocks, category, market } =
+      selectedProductDetails;
+    pinpointOnMap(
+      latitude,
+      longitude,
+      product,
+      price,
+      stocks,
+      category,
+      market
+    );
+  } else {
+    alert("Please select a product from the suggestions first.");
   }
-
-  // Create a list of products
-  const productList = document.createElement("ul");
-  filteredProducts.forEach((product) => {
-    const productItem = document.createElement("li");
-    productItem.innerHTML = `
-      <strong>${product.PRODUCTS}</strong><br>
-      Price: ${product.PRICE}<br>
-      Stock: ${product.STOCKS}
-    `;
-    productList.appendChild(productItem);
-  });
-
-  // Add the list to the container
-  productDetailsContainer.appendChild(productList);
-
-  // Show the container
-  productDetailsContainer.style.display = "block";
 }
+
+// Update the search button in your HTML to call this function
+document.querySelector(".search-button").onclick = handleSearchButtonClick;
