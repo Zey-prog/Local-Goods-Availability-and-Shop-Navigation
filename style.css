@@ -386,6 +386,21 @@ body {
   padding: 5px 0;
 }
 
+.product-card.expanded {
+    position: fixed; 
+    top: 23%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    background-color: #fff; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+    transition: all 0.5s ease; 
+}
+
 /* Dropdown menu adjustments */
 .dropdown-menu {
   display: none;
