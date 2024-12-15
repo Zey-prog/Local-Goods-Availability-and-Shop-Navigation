@@ -269,6 +269,26 @@
         }
       }
 
+            document.addEventListener("DOMContentLoaded", () => {
+  const productCards = document.querySelectorAll(".product-card");
+
+  productCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      // Check if already expanded
+      if (card.classList.contains("expanded")) {
+        card.classList.remove("expanded"); // Collapse back
+      } else {
+        // Remove the 'expanded' class from other cards
+        document.querySelectorAll(".product-card.expanded").forEach((expandedCard) => {
+          expandedCard.classList.remove("expanded");
+        });
+
+        card.classList.add("expanded"); // Expand the clicked card
+      }
+    });
+  });
+});
+
       function fetchProductList(market, productList, productListContainer) {
         fetch("datasets.csv")
           .then((response) => response.text())
